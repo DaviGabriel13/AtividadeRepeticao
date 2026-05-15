@@ -53,6 +53,7 @@ public class exercicioRepeticao16Davi {
 
                 }
 
+                //testando commit
 
                 numero = numero/10;
             }
