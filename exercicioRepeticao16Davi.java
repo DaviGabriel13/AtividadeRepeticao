@@ -3,14 +3,15 @@ import java.util.Scanner;
 public class exercicioRepeticao16Davi {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int numero,original,digito,octal,contOctal,contHexa,hexa;
+        int numero,original,digito,octal,contOctal,contHexa,hexa,decimal,contDecimal;
         String octalPrint = "",hexaPrint = "",digitoHexa = "";
         boolean binario =true;
+        contDecimal = 0;
         contOctal = 0;
         contHexa = 0;
         octal = 0;
         hexa = 0;
-
+        decimal = 0;
         System.out.println("Informe o valor do numero binario: ");
         numero = in.nextInt();
         original = numero;
@@ -28,13 +29,17 @@ public class exercicioRepeticao16Davi {
                 contOctal++;
                 hexa += (int) (digito * Math.pow(2,contHexa));
                 contHexa++;
+                decimal += (int) (digito * Math.pow(2,contDecimal));
+                contDecimal++;
                 if(contOctal == 3){
                     octalPrint = octal + octalPrint;
                     contOctal = 0;
                     octal = 0;
                 }
                 if(contHexa == 4){
-                    if(hexa == 10){
+                    if(hexa < 10){
+                        digitoHexa = String.valueOf(hexa);
+                    }else if(hexa == 10){
                         digitoHexa = "A";
                     } else if (hexa == 11) {
                         digitoHexa = "B";
@@ -53,6 +58,8 @@ public class exercicioRepeticao16Davi {
 
                 }
 
+
+
                 //testando commit
 
                 numero = numero/10;
@@ -66,7 +73,9 @@ public class exercicioRepeticao16Davi {
             }
             if (contHexa > 0){
 
-                if(hexa == 10){
+                if(hexa < 10){
+                    digitoHexa = String.valueOf(hexa);
+                }else if(hexa == 10){
                     digitoHexa = "A";
                 } else if (hexa == 11) {
                     digitoHexa = "B";
@@ -83,6 +92,7 @@ public class exercicioRepeticao16Davi {
             }
             System.out.println("Octal: "+octalPrint);
             System.out.println("Hexadecimal: "+hexaPrint);
+            System.out.println("Decimal: "+decimal);
         }else {
             System.out.println("Não é binário");
         }
